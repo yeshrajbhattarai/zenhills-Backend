@@ -1,5 +1,7 @@
+
 from django.urls import path
-from .views import EnquiryListAPIView
+from .views import EnquiryListCreateAPIView
+
 urlpatterns = [
-     path('enquiries/', EnquiryListAPIView.as_view()),
+    path("enquiries/", EnquiryListCreateAPIView.as_view(), name="enquiry-list-create"),
 ]

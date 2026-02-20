@@ -1,8 +1,10 @@
-from rest_framework import serializers
+# enquiries/views.py
+
 from rest_framework import generics
 from .models import Enquiry
 from .serializers import EnquirySerializer
 
-class EnquiryListAPIView(generics.ListAPIView):
+
+class EnquiryListCreateAPIView(generics.ListCreateAPIView):
     queryset = Enquiry.objects.all().order_by('-created_at')
-    serializer_class = EnquirySerializer;
+    serializer_class = EnquirySerializer

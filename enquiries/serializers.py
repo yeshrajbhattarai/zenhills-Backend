@@ -5,4 +5,4 @@ class EnquirySerializer(serializers.ModelSerializer):
     class Meta:
         model = Enquiry
         fields = '__all__'
-        read_only_fields = ['created_at']
+        read_only_fields = ["id", "created_at"]
