@@ -10,3 +10,17 @@ class Enquiry(models.Model):
 
     def __str__(self):
         return f"{self.fullname} - {self.subject}"
+
+class Booking(models.Model):
+    trip_name = models.CharField(max_length=200)
+    full_name = models.CharField(max_length=200)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    arrival_date = models.DateField()
+    adults = models.IntegerField()
+    children = models.IntegerField()
+    special_requests = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.full_name} - {self.trip_name}"
