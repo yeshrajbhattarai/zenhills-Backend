@@ -5,19 +5,16 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ─── SECURITY ────────────────────────────────────────────────────────────────
-# Store these in PythonAnywhere's environment variables, NEVER in this file.
-# PythonAnywhere: Web tab → "Environment variables" section
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "unsafe-secret-change-in-production")
 
-# Reads from env — set DEBUG=False in PythonAnywhere env vars
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     "yeshraj.pythonanywhere.com",
     "localhost",
     "127.0.0.1",
-    #! Add your custom domain here if you get one
+    #! Add my custom domain here 
 ]
 
 # ─── APPS ────────────────────────────────────────────────────────────────────
@@ -68,7 +65,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "ZenHills.wsgi.application"
 
 # ─── DATABASE ─────────────────────────────────────────────────────────────────
-# Uses DATABASE_URL env var if set (Railway/Postgres), else falls back to SQLite
 DATABASES = {
     "default": dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}"
@@ -83,9 +79,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-# ─── INTERNATIONALISATION ────────────────────────────────────────────────────
+# ─── TIME ────────────────────────────────────────────────────
 LANGUAGE_CODE = "en-us"
-TIME_ZONE = "Asia/Kolkata"   # changed from UTC — you're in IST
+TIME_ZONE = "Asia/Kolkata"  
 USE_I18N = True
 USE_TZ = True
 
@@ -96,27 +92,23 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # ─── CORS ────────────────────────────────────────────────────────────────────
-# Only allow your actual frontend origins — not everything
 CORS_ALLOWED_ORIGINS = [
     "https://zenhills-journeys.vercel.app",
     "http://localhost:8080",
     "http://localhost:5173",   # Vite dev server
 ]
-# CORS_ALLOW_ALL_ORIGINS = True  # ← never use this in production
+# CORS_ALLOW_ALL_ORIGINS = True 
 
-# ─── EMAIL ───────────────────────────────────────────────────────────────────
-# Store EMAIL_HOST_PASSWORD as an environment variable in PythonAnywhere.
-# NEVER hardcode credentials in this file.
-# Steps:
-#   1. Go to Google Account → Security → App Passwords
-#   2. Revoke the old password (it's exposed on GitHub)
-#   3. Generate a new app password
-#   4. In PythonAnywhere Web tab → add env var: EMAIL_HOST_PASSWORD = <new password>
+#! ─── EMAIL if switched to pythonanywhere pro
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_HOST = "smtp.gmail.com"
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "zenhills53@gmail.com")
+# EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")  
+# DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+#! ─── EMAIL if switched to pythonanywhere pro
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = "smtp.gmail.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "zenhills53@gmail.com")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")  # set in env, never here
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SENDGRID_API_KEY  = os.environ.get("SENDGRID_API_KEY", "")
+ZENHILLS_FROM_EMAIL = "zenhills53@gmail.com"
+ZENHILLS_FROM_NAME  = "ZenHills Journeys"
