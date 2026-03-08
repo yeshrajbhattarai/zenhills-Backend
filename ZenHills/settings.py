@@ -14,6 +14,7 @@ ALLOWED_HOSTS = [
     "yeshraj.pythonanywhere.com",
     "localhost",
     "127.0.0.1",
+    "zenhills-backend-production.up.railway.app",
     #! Add my custom domain here 
 ]
 
