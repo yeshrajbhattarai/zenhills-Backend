@@ -37,7 +37,7 @@ def send_sg_email(to_email: str, to_name: str, subject: str, body: str):
             }
         ],
         "from": {
-            "email": "zenhills53@gmail.com",
+            "email": "noreply@zenhillsjourneys.com",   # ✅ Updated — domain authenticated
             "name":  "ZenHills Journeys",
         },
         "content": [
@@ -156,7 +156,7 @@ If you have any questions, feel free to reach out:
 
 💬 WhatsApp: https://wa.me/918409970064
 
-🌐 https://zenhills-journeys.vercel.app
+🌐 https://zenhillsjourneys.com
 
 Warm regards,
 ZenHills Journeys Team
