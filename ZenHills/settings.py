@@ -12,10 +12,8 @@ DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = [
     "yeshraj.pythonanywhere.com",
-    "localhost",
-    "127.0.0.1",
-    "zenhills-backend-production.up.railway.app",
-    #! Add my custom domain here 
+    "zenhillsjourneys.com",
+    "www.zenhillsjourneys.com",
 ]
 
 # ─── APPS ────────────────────────────────────────────────────────────────────
@@ -95,8 +93,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # ─── CORS ────────────────────────────────────────────────────────────────────
 CORS_ALLOWED_ORIGINS = [
     "https://zenhills-journeys.vercel.app",
-    "http://localhost:8080",
-    "http://localhost:5173",   # Vite dev server
+    "https://zenhillsjourneys.com",
+    "https://www.zenhillsjourneys.com",
 ]
 # CORS_ALLOW_ALL_ORIGINS = True 
 
