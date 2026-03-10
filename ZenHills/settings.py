@@ -96,8 +96,12 @@ CORS_ALLOWED_ORIGINS = [
     "https://zenhillsjourneys.com",
     "https://www.zenhillsjourneys.com",
 ]
-# CORS_ALLOW_ALL_ORIGINS = True 
-
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "authorization",
+    "content-type",
+    "x-admin-key", 
+]
 #! ─── EMAIL if switched to pythonanywhere pro
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 # EMAIL_HOST = "smtp.gmail.com"
