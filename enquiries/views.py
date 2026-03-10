@@ -99,12 +99,18 @@ Received At: {enquiry.created_at.strftime("%d %b %Y, %I:%M %p IST")}
 """,
         )
 
-
 # ─── Booking ─────────────────────────────────────────────────────────────────
-class BookingCreateAPIView(generics.CreateAPIView):
-    queryset = Booking.objects.all()
+class BookingCreateAPIView(generics.ListCreateAPIView):
+    queryset = Booking.objects.all().order_by("-created_at")
     serializer_class = BookingSerializer
     permission_classes = [permissions.AllowAny]
+
+    def get(self, request, *args, **kwargs):
+        expected_key = os.environ.get("ADMIN_KEY", "")
+        incoming_key = request.headers.get("X-Admin-Key", "")
+        if not expected_key or incoming_key != expected_key:
+            return Response({"error": "Unauthorized"}, status=status.HTTP_401_UNAUTHORIZED)
+        return super().get(request, *args, **kwargs)
 
     def perform_create(self, serializer):
         booking = serializer.save()
