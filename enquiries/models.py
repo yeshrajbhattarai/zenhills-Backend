@@ -24,3 +24,16 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"{self.full_name} - {self.trip_name}"
+    
+class Review(models.Model):
+    RATING_CHOICES = [(i, i) for i in range(1, 6)]
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    rating = models.IntegerField(choices=RATING_CHOICES)
+    message = models.TextField()
+    trip_name = models.CharField(max_length=200, blank=True)
+    is_approved = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.rating}★"
